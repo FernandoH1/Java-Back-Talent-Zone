@@ -39,4 +39,11 @@ public class ProductService {
         }
     }
 
+    public boolean existProduct(Long id){
+        if(productRepository.findById(id).isPresent()){
+            return true;
+        }
+        return false;
+    }
+
 }

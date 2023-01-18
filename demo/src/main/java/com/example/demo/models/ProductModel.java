@@ -16,6 +16,19 @@ public class ProductModel {
     private boolean enable;
     private int min;
     private int max;
+    private int quantity;
+
+
+    public ProductModel() {}
+
+    public ProductModel(String name, int inInventrory, boolean enable, int min, int max) {
+        this.name = name;
+        this.inInventrory = inInventrory;
+        this.enable = enable;
+        this.min = min;
+        this.max = max;
+        this.quantity = quantity;
+    }
 
     public Long getId() {
         return id;
@@ -63,5 +76,13 @@ public class ProductModel {
 
     public void setMax(int max) {
         this.max = max;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
     }
 }
