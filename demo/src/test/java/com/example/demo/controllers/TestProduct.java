@@ -21,7 +21,7 @@ import java.util.List;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-//@WebMvcTest(ProductController.class)
+
 public class TestProduct {
 
     @MockBean
