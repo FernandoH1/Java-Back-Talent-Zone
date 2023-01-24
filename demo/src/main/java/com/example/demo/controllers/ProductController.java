@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -55,12 +56,7 @@ public class ProductController {
     }
 
     @DeleteMapping( path = "/{id}")
-    public String deleteProductById(@PathVariable("id") Long id){
-        boolean ok = this.productService.deleteProduct(id);
-        if (ok){
-            return "Se eliminó el producto con id " + id;
-        }else{
-            return "No se pudo eliminar el producto con id" + id;
-        }
+    public ResponseEntity<Map<String, Boolean>> deleteProductById(@PathVariable("id") Long id){
+        return this.productService.deleteProduct(id);
     }
 }

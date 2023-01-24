@@ -3,9 +3,13 @@ package com.example.demo.servicios;
 import com.example.demo.models.ProductModel;
 import com.example.demo.repositorios.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -30,13 +34,12 @@ public class ProductService {
         return productRepository.findById(id);
     }
 
-    public boolean deleteProduct(Long id) {
-        try{
-            productRepository.deleteById(id);
-            return true;
-        }catch(Exception err){
-            return false;
-        }
+    public ResponseEntity<Map<String,Boolean>> deleteProduct(Long id) {
+        ProductModel product = productRepository.findById(id).orElseThrow();
+            productRepository.delete(product);
+            Map<String, Boolean> respuesta = new HashMap<>();
+            respuesta.put("eliminar",Boolean.TRUE);
+            return ResponseEntity.ok(respuesta);
     }
 
     public boolean existProduct(Long id){
